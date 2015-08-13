@@ -159,10 +159,10 @@ angular.module('ui.tinymce', [])
         });
 
         scope.$on('$destroy', function() {
-          ensureInstance();
+          //ensureInstance();
 
           if (tinyInstance) {
-            tinyInstance.remove();
+            //tinyInstance.remove();
             tinyInstance = null;
           }
         });
