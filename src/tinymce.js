@@ -136,7 +136,8 @@ angular.module('ui.tinymce', [])
           if (tinyInstance &&
             tinyInstance.getDoc()
           ) {
-            tinyInstance.setContent(viewValue);
+            if (options.format) tinyInstance.setContent(viewValue, {format : options.format});
+            else tinyInstance.setContent(viewValue);
             // Triggering change event due to TinyMCE not firing event &
             // becoming out of sync for change callbacks
             tinyInstance.fire('change');
