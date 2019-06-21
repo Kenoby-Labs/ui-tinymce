@@ -79,13 +79,25 @@ angular.module('ui.tinymce', [])
               updateView(ed);
             });
 
+            /*
+              Commenting this event onChange due to performance issues when typing the text, because the model was being updated a lot
+              Added the onBlur and onFocus events to update the model
+            */
             // Update model on change
-            ed.on('change', function(e) {
-              ed.save();
-              updateView(ed);
-            });
+            // ed.on('change', function(e) {
+              // ed.save();
+              // updateView(ed);
+            // });
 
             ed.on('blur', function() {
+              ed.save();
+              updateView(ed);
+              element[0].blur();
+            });
+
+            ed.on('focus', function() {
+              ed.save();
+              updateView(ed);
               element[0].blur();
             });
 
